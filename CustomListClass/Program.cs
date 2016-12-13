@@ -11,10 +11,14 @@ namespace CustomListClass
         static void Main(string[] args)
         {
             People people = new People();
-            People[] information = new People[10];
-            name[0] = people.AddFirstName();
-            name[1] = people.AddLastName();
-            Console.WriteLine(people);
+            object[] information = new object[10];
+            int i;
+            for (i = 0; i < 10; i++)
+            {
+               
+            }
+        
+        Console.WriteLine(people);
             
 
         Console.ReadKey();
