@@ -9,57 +9,58 @@ namespace CustomListClass
 {
     class CustomList<T> : IEnumerable
     {
-        string animal;
-        string noise;
-        T value;
-
-        public CustomList(T itemToDisplay)
-        {
-            value = itemToDisplay;
-        }
+        T[] contents;
+        int capacity = 1;
+        int count;
 
         public CustomList()
         {
-        }
-
-        public void Display()
-        {
-            Console.WriteLine(value);
+            contents = new T[Capacity];
         }
         public int Capacity
         {
-            set
+            get
             {
-
+                return capacity;
+            }
+        } 
+        public int Count
+        {
+            get
+            {
+                return count;
             }
         }
-        public int Count { get; set; }
-        public string Animal
+        public void Display()
         {
-            set
-            {
-                animal = value;
-            }
-        }
-        public string Noise
-        {
-            set
-            {
-                noise = value;
-            }
+            Console.WriteLine();
         }
         public void Add(T item)
         {
-            for (int i = 0; i < Count; i++)
+            //temporary array
+            T[] temp = new T[Capacity];
+            //for loop to iterate over array
+            for (int i = 0; i < Capacity; i++)
             {
-                Console.WriteLine(i);
+                //set contents[i] =  temp[i]
+                //contents = temp;
+                
+                count++;
             }
         }
-        //public void Insert(int index, T item)
-        //{
+        public bool Remove(T item)
+        {
+            T[] ex = new T[1];
+            for (int i = 1; i > 0; i--)
+            {
 
+            }
+            return true;
+        }
+        //public override string ToString()
+        //{
         //}
-        //public bool Remove(T item)
+        //public void Insert(int index, T item)
         //{
 
         //}
@@ -71,14 +72,11 @@ namespace CustomListClass
         //{
 
         //}
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public IEnumerator GetEnumerator()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
+        //public IEnumerator<T> GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            yield return contents;
+        }
     }
 }
+
