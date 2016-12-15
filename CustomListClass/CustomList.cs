@@ -7,16 +7,25 @@ using System.Threading.Tasks;
 
 namespace CustomListClass
 {
-    class CustomList<T> : IEnumerable
+    public class CustomList<T> : IEnumerable
     {
         T[] contents;
+        T value;
         int capacity = 1;
         int count;
-
         public CustomList()
         {
-            contents = new T[Capacity];
+
         }
+        public CustomList(T item)
+        {
+            contents = new T[Capacity];
+            value = item;
+        }
+        //public CustomList(T item)
+        //{
+        //    value = item;
+        //}
         public int Capacity
         {
             get
@@ -42,7 +51,7 @@ namespace CustomListClass
             {                
                 contents[i] = temp[i];                
                 count++;
-            }
+            }  
         }
         public bool Remove(T item)
         {

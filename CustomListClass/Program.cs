@@ -12,7 +12,7 @@ namespace CustomListClass
         static void Main(string[] args)
         {
             Console.WriteLine("A list of animals and the noise they make.");
-            CustomList<string> animals = new CustomList<string>();
+            CustomList<string> animals = new CustomList<string>("Animals");
             animals.Add("Dog");
             animals.Add("Cat");
             animals.Add("Duck");
@@ -21,7 +21,7 @@ namespace CustomListClass
             animals.Display();
             Console.WriteLine("Count: {0}", animals.Count);
 
-            CustomList<string> noises = new CustomList<string>();
+            CustomList<string> noises = new CustomList<string>("Noises");
             noises.Add("Bark");
             noises.Add("Meow");
             noises.Add("Quack");
