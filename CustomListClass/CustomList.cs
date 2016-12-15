@@ -37,14 +37,10 @@ namespace CustomListClass
         }
         public void Add(T item)
         {
-            //temporary array
             T[] temp = new T[Capacity];
-            //for loop to iterate over array
             for (int i = 0; i < Capacity; i++)
-            {
-                //set contents[i] =  temp[i]
-                //contents = temp;
-                
+            {                
+                contents[i] = temp[i];                
                 count++;
             }
         }

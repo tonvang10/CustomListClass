@@ -18,7 +18,6 @@ namespace CustomListClass
             animals.Add("Duck");
             animals.Add("Cow");
             animals.Add("Pig");
-            animals.Add("Pig");
             animals.Display();
             Console.WriteLine("Count: {0}", animals.Count);
 
