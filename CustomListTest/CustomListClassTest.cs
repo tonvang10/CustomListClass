@@ -8,13 +8,37 @@ namespace CustomListTest
     public class CustomListClassTest
     {
         [TestMethod]
-        public void TestAddMethod()
+        public void TestAddEquaition()
         {
             //Arrange
             CustomList<int> customList = new CustomList<int>();
-            customList.Add(1);
+            //int count;
             //Act
+            //customList.Add(1);
+
             //Assert
+            //Assert.Equals(count++);
+            
+        }
+        [TestMethod]
+        public void TestAddOutcome()
+        {
+
+        }
+        [TestMethod]
+        public void TestAddToList()
+        {
+
+        }
+        [TestMethod]
+        public void TestCountProperty()
+        {
+
+        }
+        [TestMethod]
+        public void TestRemoveMethod()
+        {
+
         }
     }
 }

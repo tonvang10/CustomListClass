@@ -10,29 +10,21 @@ namespace CustomListClass
     public class CustomList<T> : IEnumerable
     {
         T[] contents;
-        T value;
-        int capacity = 1;
+        int capacity;
         int count;
+
         public CustomList()
         {
-
+            contents = new T[0];
+            capacity = count;
         }
-        public CustomList(T item)
-        {
-            contents = new T[Capacity];
-            value = item;
-        }
-        //public CustomList(T item)
-        //{
-        //    value = item;
-        //}
         public int Capacity
         {
             get
             {
                 return capacity;
             }
-        } 
+        }
         public int Count
         {
             get
@@ -42,24 +34,32 @@ namespace CustomListClass
         }
         public void Display()
         {
-            Console.WriteLine();
+            foreach (T items in contents)
+            {
+                Console.WriteLine(items);
+            }
         }
         public void Add(T item)
         {
-            T[] temp = new T[Capacity];
-            for (int i = 0; i < Capacity; i++)
-            {                
-                contents[i] = temp[i];                
-                count++;
-            }  
+            T[] temp = new T[contents.Count() + 1];
+            for (int i = 0; i < contents.Count(); i++)
+            {
+                temp[i] = contents[i];
+            }
+            temp[Count] = item;
+            contents = temp;
+            count++;
         }
         public bool Remove(T item)
         {
-            T[] ex = new T[1];
-            for (int i = 1; i > 0; i--)
+            T[] temp = new T[contents.Count()];
+            for (int i = temp.Count() - 1; i >= 0; i--)
             {
-
+                temp[i] = contents[i];
             }
+            //temp[count] = item;
+            contents = temp;
+            count--;
             return true;
         }
         //public override string ToString()
