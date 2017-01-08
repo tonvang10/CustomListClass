@@ -16,13 +16,17 @@ namespace CustomListClass
         public CustomList()
         {
             contents = new T[0];
-            capacity = count;
+            capacity = 50;
         }
         public int Capacity
         {
             get
             {
                 return capacity;
+            }
+            set
+            {
+                capacity = value;
             }
         }
         public int Count
@@ -46,41 +50,95 @@ namespace CustomListClass
             {
                 temp[i] = contents[i];
             }
-            temp[Count] = item;
+            temp[contents.Count()] = item;
             contents = temp;
             count++;
+            capacity--;
         }
-        public bool Remove(T item)
+        public void Remove(T item)
         {
-            T[] temp = new T[contents.Count()];
-            for (int i = temp.Count() - 1; i >= 0; i--)
+            bool remove = true;
+            T[] temp = new T[contents.Count() - 1];
+            for (int i = 0; i <= temp.Count(); i++)
             {
-                temp[i] = contents[i];
+                if (remove)
+                {
+                    if (contents[i].Equals(item))
+                    {
+                        remove = false;
+                    }
+                    else
+                    {
+                        temp[i] = contents[i];
+                    }
+                }
+                else
+                {
+                    temp[i - 1] = contents[i];
+                }
             }
-            //temp[count] = item;
             contents = temp;
             count--;
-            return true;
+            capacity++;
         }
-        //public override string ToString()
-        //{
-        //}
-        //public void Insert(int index, T item)
-        //{
-
-        //}
-        //public static CustomList<T> operator -(CustomList<T> animals, CustomList<T> noises)
-        //{
-
-        //}
-        //public static CustomList<T> operator +(CustomList<T> animals, CustomList<T> noises)
-        //{
-
-        //}
-        //public IEnumerator<T> GetEnumerator();
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (T items in contents)
+            {
+                builder.Append(items).Append("");
+            }
+            string result = builder.ToString();
+            Console.WriteLine(result);
+            return result;
+        }
+        public static CustomList<T> operator +(CustomList<T> customList1, CustomList<T> customList2)
+        {
+            CustomList<T> AddArrayList = new CustomList<T>();
+            foreach (T item in customList1)
+            {
+                AddArrayList.Add(item);
+            }
+            foreach (T item in customList2)
+            {
+                AddArrayList.Add(item);
+            }
+            return AddArrayList;
+        }
+        public static CustomList<T> operator -(CustomList<T> customList1, CustomList<T> customList2)
+        {
+            for (int i = 0; i < customList1.Count; i++)
+            {
+                for (int j = 0; j < customList2.Count; j++)
+                {
+                    if (customList1.contents[i].Equals(customList2.contents[j]))
+                    {
+                        customList1.Remove(customList2.contents[j]);
+                    }
+                }
+            }
+            return customList1;
+        }
+        public void Zipper(CustomList<T> customList1, CustomList<T> customList2)
+        {
+            if (customList1.contents.Count() >= customList2.contents.Count())
+            {
+                for (int i = 0; i < customList1.contents.Count(); i++)
+                {
+                    Console.WriteLine(customList1.contents[i] + "" + customList2.contents[i]);
+                }
+            }
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < contents.Count(); i++)
+            {
+                yield return contents[i];
+            }
+        }
         IEnumerator IEnumerable.GetEnumerator()
         {
-            yield return contents;
+            return GetEnumerator();
         }
     }
 }
