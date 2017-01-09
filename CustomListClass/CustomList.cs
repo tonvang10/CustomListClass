@@ -9,7 +9,7 @@ namespace CustomListClass
 {
     public class CustomList<T> : IEnumerable
     {
-        T[] contents;
+        public T[] contents;
         int capacity;
         int count;
 
